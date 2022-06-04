@@ -52,3 +52,22 @@ class PostTest(TestCase):
         self.new_post.save_post()
         posts = Post.get_post()
         self.assertTrue(len(posts) > 0)
+
+class CommentTest(TestCase):
+    def setUp(self):
+        self.new_comment = Comment(comment='This is a comment', user='testuser', post='testpost')
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.new_comment, Comment))
+
+    def test_save_comment(self):
+        self.new_comment.save_comment()
+        comments = Comment.objects.all()
+        self.assertTrue(len(comments) > 0)
+
+    def test_delete_comment(self):
+        self.new_comment.save_comment()
+        self.new_comment.delete_comment()
+        comments = Comment.objects.all()
+        self.assertTrue(len(comments) == 0)
+
