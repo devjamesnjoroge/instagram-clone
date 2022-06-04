@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from . forms import UserProfileForm
-from . models import Profile
+from . forms import PostForm, UserProfileForm
+from . models import Post, Profile
 
 # Create your views here.
 
@@ -26,3 +26,14 @@ def index(request):
     else:
         form = UserProfileForm()
     return render(request, 'index.html', {"form": form, "profile": profile})
+
+def post(request):
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.editor = request.user
+            post.save()
+    else:
+        form = PostForm()
+    return render(request, 'post.html', {"form": form})

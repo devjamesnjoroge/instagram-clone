@@ -1,5 +1,5 @@
 from django import forms
-from .models import Profile
+from .models import Profile, Post, Comment, Like, Follow
 
 class UserProfileForm(forms.ModelForm):
     class Meta:
@@ -10,4 +10,11 @@ class UserProfileForm(forms.ModelForm):
             'bio': forms.Textarea(attrs={'class': 'form-control'}),
         }
 
-    
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        exclude = ['editor']
+        widgets = {
+            'image': forms.FileInput(attrs={'class': 'form-control-file'}),
+            'caption': forms.Textarea(attrs={'class': 'form-control'}),
+        }

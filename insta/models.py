@@ -35,7 +35,6 @@ class Post(models.Model):
     caption = models.TextField(max_length=500)
     editor = models.ForeignKey(User, on_delete=models.CASCADE)
     likes = models.ManyToManyField(User, related_name='likes', blank=True)
-    comments = models.ManyToManyField(User, related_name='comments', blank=True)
 
     def save_post(self):
         self.save()
