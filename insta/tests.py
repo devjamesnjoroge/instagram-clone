@@ -1,10 +1,13 @@
 from django.test import TestCase
-from .models import Profile, Post, Comment, Like, Follow
+from . models import Profile, Post, Comment, Like, Follow
+from django.contrib.auth.models import User
 
 # Create your tests here.
+
 class ProfileTest(TestCase):
     def setUp(self):
-        self.new_profile = Profile(profile_photo='image.jpg', bio='This is a bio', user='testuser')
+        user=User.objects.get_or_create(username='test_user')[0]
+        self.new_profile = Profile(profile_photo='image.jpg', bio='This is a bio', user=user)
 
     def test_instance(self):
         self.assertTrue(isinstance(self.new_profile, Profile))
@@ -25,14 +28,11 @@ class ProfileTest(TestCase):
         profiles = Profile.get_profile()
         self.assertTrue(len(profiles) > 0)
 
-    def test_get_profile_by_id(self):
-        self.new_profile.create_profile()
-        profiles = Profile.get_profile_by_id(1)
-        self.assertTrue(profiles.id == 1)
 
 class PostTest(TestCase):
     def setUp(self):
-        self.new_post = Post(image='image.jpg', caption='This is a caption', user='testuser')
+        user=User.objects.get_or_create(username='test_user')[0]       
+        self.new_post = Post(image='image.jpg', caption='This is a caption', user=user)
 
     def test_instance(self):
         self.assertTrue(isinstance(self.new_post, Post))
@@ -55,7 +55,9 @@ class PostTest(TestCase):
 
 class CommentTest(TestCase):
     def setUp(self):
-        self.new_comment = Comment(comment='This is a comment', user='testuser', post='testpost')
+        user=User.objects.get_or_create(username='test_user')[0]
+        post = Post.objects.get_or_create(image='image.jpg', caption='This is a caption', user=user)[0]
+        self.new_comment = Comment(comment='This is a comment',post=post, user=user)
 
     def test_instance(self):
         self.assertTrue(isinstance(self.new_comment, Comment))
@@ -73,7 +75,9 @@ class CommentTest(TestCase):
 
 class LikeTest(TestCase):
     def setUp(self):
-        self.new_like = Like(user='testuser', post='testpost')
+        user=User.objects.get_or_create(username='test_user')[0]
+        post = Post.objects.get_or_create(image='image.jpg', caption='This is a caption', user=user)[0]
+        self.new_like = Like(user=user, post=post)
 
     def test_instance(self):
         self.assertTrue(isinstance(self.new_like, Like))
