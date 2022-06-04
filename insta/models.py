@@ -16,6 +16,8 @@ class Post(models.Model):
     likes = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='likes')
     comments = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='comments')
 
-
-
+class Comment(models.Model):
+    comment = models.TextField(max_length=500)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
 
