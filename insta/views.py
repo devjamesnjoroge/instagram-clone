@@ -7,6 +7,11 @@ from . models import Post, Profile
 
 @login_required(login_url='/accounts/login/')
 def index(request):
+    posts = Post.objects.all()
+    return render(request, 'index.html', {"posts": posts})
+
+@login_required(login_url='/accounts/login/')
+def profile(request):
     if Profile.objects.filter(editor=request.user).exists():
        profile = Profile.objects.get(editor=request.user)
     else:
@@ -25,7 +30,7 @@ def index(request):
                 form.save()
     else:
         form = UserProfileForm()
-    return render(request, 'index.html', {"form": form, "profile": profile})
+    return render(request, 'profile.html', {"form": form, "profile": profile})
 
 def post(request):
     if request.method == 'POST':
