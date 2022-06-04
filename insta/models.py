@@ -40,12 +40,19 @@ class Post(models.Model):
 
     def delete_post(self):
         self.delete()
-        
+
 
 class Comment(models.Model):
     comment = models.TextField(max_length=500)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
+
+    def save_comment(self):
+        self.save()
+
+    def delete_comment(self):
+        self.delete()
+        
 
 class Like(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
