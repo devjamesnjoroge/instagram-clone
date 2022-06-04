@@ -41,6 +41,11 @@ class Post(models.Model):
     def delete_post(self):
         self.delete()
 
+    @classmethod
+    def get_post(cls):
+        post = Post.objects.all()
+        return post
+
 
 class Comment(models.Model):
     comment = models.TextField(max_length=500)
