@@ -35,6 +35,13 @@ class Post(models.Model):
     likes = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='likes', blank=True)
     comments = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='comments', blank=True)
 
+    def save_post(self):
+        self.save()
+
+    def delete_post(self):
+        self.delete()
+        
+
 class Comment(models.Model):
     comment = models.TextField(max_length=500)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
