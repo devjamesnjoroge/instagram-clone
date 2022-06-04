@@ -69,5 +69,23 @@ class CommentTest(TestCase):
         self.new_comment.save_comment()
         self.new_comment.delete_comment()
         comments = Comment.objects.all()
-        self.assertTrue(len(comments) == 0)
+        self.assertTrue(len(comments) == 0) 
+
+class LikeTest(TestCase):
+    def setUp(self):
+        self.new_like = Like(user='testuser', post='testpost')
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.new_like, Like))
+
+    def test_save_like(self):
+        self.new_like.save_like()
+        likes = Like.objects.all()
+        self.assertTrue(len(likes) > 0)
+
+    def test_delete_like(self):
+        self.new_like.save_like()
+        self.new_like.delete_like()
+        likes = Like.objects.all()
+        self.assertTrue(len(likes) == 0)
 
