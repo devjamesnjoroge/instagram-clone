@@ -47,6 +47,11 @@ class Post(models.Model):
         post = Post.objects.all()
         return post
 
+    @classmethod
+    def get_post_by_id(cls, id):
+        post = Post.objects.get(id=id)
+        return post
+
 
 class Comment(models.Model):
     comment = models.TextField(max_length=500)

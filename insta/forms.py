@@ -18,3 +18,11 @@ class PostForm(forms.ModelForm):
             'image': forms.FileInput(attrs={'class': 'form-control-file'}),
             'caption': forms.Textarea(attrs={'class': 'form-control'}),
         }
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        exclude = ['editor', 'post']
+        widgets = {
+            'comment': forms.Textarea(attrs={'class': 'form-control'}),
+        }
