@@ -44,7 +44,8 @@ def post(request):
     return render(request, 'post.html', {"form": form})
 
 def comment(request, id):
-    comments = Comment.objects.all()
+    post = Post.objects.get(id=id)
+    comments = Comment.objects.filter(post=post)
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():

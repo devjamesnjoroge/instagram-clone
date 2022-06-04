@@ -15,6 +15,7 @@
         </div>
     </form>
 </div>
+{% if comments %}
 {% for comment in comments %}
 <div class="card">
     <div class="card-header">
@@ -25,7 +26,9 @@
     </div>
     <div class="card-footer">
             <a href="">Reply</a>
+            <h6>{{comment.post.id}}</h6>
     </div>
 </div>
 {% endfor %}
+{% endif %}
 {% endblock %}
