@@ -10,7 +10,7 @@
     <div class="row pt-5 flex-column-reverse flex-lg-row">
         <div class="col-md-6 pt-5 ig">
             {% if profile %}
-            <img src="{{profile.profile_photo.url}}" alt="logo" class=" img img-responsive" id="ig1">
+            <img src="{{profile.profile_photo.url}}" alt="logo" class="img-fluid img-responsive" id="ig1">
             {% else %}
             <img src="{% static 'images/ig.png' %}" alt="logo" class=" img img-responsive" id="ig1">
             {% endif %}
@@ -18,9 +18,6 @@
 
         <div class="col-md-6 pt-5">
             <h1 class="text-center">Instagram</h1>
-            {% if profile %}
-            <h3 class="text-center">{{profile.username}}</h3>
-            {% else %}
             <p>{{ user.username }}</p>
             <p>{{ user.id }}</p>
             <form action="/" method="post" enctype="multipart/form-data">
@@ -30,7 +27,6 @@
                     <input type="submit" class="btn btn-primary btn-sm" value="edit profile">
                 </div>
             </form>
-            {% endif %}
         </div>
     </div>
 </div>

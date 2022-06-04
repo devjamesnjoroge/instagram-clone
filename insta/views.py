@@ -14,9 +14,15 @@ def index(request):
     if request.method == 'POST':
         form = UserProfileForm(request.POST, request.FILES)
         if form.is_valid():
-            profile = form.save(commit=False)
-            profile.editor = request.user
-            form.save()
+            if Profile.objects.filter(editor=request.user).exists():
+                profile = Profile.objects.get(editor=request.user)
+                profile.profile_photo = form.cleaned_data['profile_photo']
+                profile.bio = form.cleaned_data['bio']
+                profile.save()
+            else:
+                profile = form.save(commit=False)
+                profile.editor = request.user
+                form.save()
     else:
         form = UserProfileForm()
     return render(request, 'index.html', {"form": form, "profile": profile})
