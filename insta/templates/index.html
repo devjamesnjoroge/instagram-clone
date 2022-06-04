@@ -1,13 +1,19 @@
 {% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load static %}
+{% block styles %}
+{% bootstrap_css %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
 {% block content %}
 <div class="container">
-    <div class="row">
-        <div class="col-md-6">
-
+    <div class="row pt-5 flex-column-reverse flex-lg-row">
+        <div class="col-md-6 pt-5 ig">
+            <img src="{% static 'images/ig.png' %}" alt="logo" class=" img img-responsive" id="ig1">
         </div>
 
-        <div class="col-md-6">
-            <h1>Instagram</h1>
+        <div class="col-md-6 pt-5">
+            <h1 class="text-center">Instagram</h1>
         </div>
     </div>
 </div>

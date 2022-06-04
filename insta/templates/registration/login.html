@@ -1,0 +1,31 @@
+{% extends 'registration/base.html' %}
+{% load bootstrap4 %}
+{% load static %}
+{% block styles %}
+{% bootstrap_css %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row pt-5 flex-column-reverse flex-lg-row">
+        <div class="col-md-6 pt-5 ig">
+            <img src="{% static 'images/ig.png' %}" alt="logo" class=" img img-responsive" id="ig1">
+        </div>
+
+        <div class="col-md-6 d-flex align-items-center justify-content-center flex-column">
+            <h3 class="text-center">Login</h3>
+            <form  action="/accounts/login/" method="post">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                <div class="form-group">
+                  <input type="submit" class="btn btn-primary btn-sm" value="Sign Up">
+                </div>
+    
+                <input type="hidden" name="next" value="{{next}}">
+    
+              </form>
+            <p>Don't have an account? <a href="/accounts/register">Register</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}
