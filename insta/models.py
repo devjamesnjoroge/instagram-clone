@@ -7,7 +7,7 @@ from tinymce.models import HTMLField
 # Create your models here.
 
 class Profile(models.Model):
-    profile_photo = CloudinaryField('image', blank=True)
+    profile_photo = CloudinaryField('image')
     bio = HTMLField()
     editor = models.OneToOneField(User, on_delete=models.CASCADE)
 
@@ -28,7 +28,7 @@ class Profile(models.Model):
         return profile
 
     def __str__(self):
-        return self.user.username
+        return self.editor.username
 
 class Post(models.Model):
     image = CloudinaryField('image')
