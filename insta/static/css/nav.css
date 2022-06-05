@@ -1,0 +1,15 @@
+nav{
+    padding-left: 5vw!important;
+    padding-right: 8vw!important;
+    margin-bottom: 5vh!important;
+}
+
+.nl{
+    padding-left: 20vw !important;
+}
+
+@media screen and (max-width: 768px) {
+    .nl{
+        padding-left: 0vw!important;
+    }
+}
