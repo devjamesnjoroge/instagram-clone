@@ -1,31 +1,8 @@
-.ig{
-    position: relative;
-    display: flex;
-    align-items: flex-start;
-    justify-content: start;
-}
-
-.img{
-    height: 60vh;
-    width: auto;
-}
-
-#ig1{
-    z-index: -1;
-}
-
-#ig2{
-    position: absolute;
-    z-index: 99;
-    right: 2vw;
-    border-radius: 10px;
-    margin-top: 15vh;
-}
-
-form .form-group small{
-    display: none;
-}
-
-form{
-    width: 70%;
+.circle{
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
 }

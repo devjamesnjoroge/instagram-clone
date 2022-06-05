@@ -8,8 +8,24 @@ nav{
     padding-left: 20vw !important;
 }
 
-@media screen and (max-width: 768px) {
+.circle{
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 30px!important;
+    width: 30px!important;
+    border-radius: 50%;
+}
+
+.navl{
+    margin-left: 15vw!important;
+}
+
+@media screen and (max-width: 991px) {
     .nl{
         padding-left: 0vw!important;
+    }
+    .navl{
+        margin-left: 0vw!important;
     }
 }

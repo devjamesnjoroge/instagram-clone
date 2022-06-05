@@ -18,16 +18,6 @@
     </button>
  
     <div class="collapse navbar-collapse nl" id="navbarSupportedContent">
-       <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-             <a class="nav-link" href="/"
-                >Home <span class="sr-only">(current)</span></a
-             >
-          </li>
-          <li class="nav-item">
-             <a class="nav-link" href="#">Posts</a>
-          </li>
-       </ul>
        <form class="form-inline my-2 my-lg-0">
           <input
              class="form-control mr-sm-2"
@@ -36,28 +26,40 @@
              aria-label="Search"
           />
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-             Search
+             Search <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11.25 11.25L14.25 14.25" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M7.5 12.25C10.1234 12.25 12.25 10.1234 12.25 7.5C12.25 4.87665 10.1234 2.75 7.5 2.75C4.87665 2.75 2.75 4.87665 2.75 7.5C2.75 10.1234 4.87665 12.25 7.5 12.25Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                
           </button>
        </form>
-       <ul class="navbar-nav mr-auto">
-        <li class="nav-item dropdown">
-            <a
-               class="nav-link dropdown-toggle"
-               href="#"
-               id="navbarDropdown"
-               role="button"
-               data-toggle="dropdown"
-               aria-haspopup="true"
-               aria-expanded="false"
+       <ul class="navbar-nav mr-auto navl">
+        <li class="nav-item active">
+            <a class="nav-link" href="/"
+               ><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 13L11.293 3.707C11.4805 3.51953 11.7348 3.41422 12 3.41422C12.2652 3.41422 12.5195 3.51953 12.707 3.707L22 13H20V21C20 21.2652 19.8946 21.5196 19.7071 21.7071C19.5196 21.8946 19.2652 22 19 22H14V15H10V22H5C4.73478 22 4.48043 21.8946 4.29289 21.7071C4.10536 21.5196 4 21.2652 4 21V13H2Z" fill="black"/>
+                </svg>
+                 <span class="sr-only">(current)</span></a
             >
-               Profile
+         </li>
+         <li class="nav-item">
+            <a class="nav-link" href="#">
+                <svg width="24" height="24" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 4.5H5.5C4.96957 4.5 4.46086 4.71071 4.08579 5.08579C3.71071 5.46086 3.5 5.96957 3.5 6.5V15.5C3.5 16.0304 3.71071 16.5391 4.08579 16.9142C4.46086 17.2893 4.96957 17.5 5.5 17.5H15.5C16.0304 17.5 16.5391 17.2893 16.9142 16.9142C17.2893 16.5391 17.5 16.0304 17.5 15.5V11" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M15.5 5.49999L16.453 6.49999M17.5 3.46699C17.7666 3.74265 17.9142 4.11201 17.911 4.49547C17.9078 4.87893 17.7541 5.2458 17.483 5.51699L10.5 12.5L7.5 13.5L8.5 10.5L15.487 3.45399C15.7326 3.20647 16.0613 3.05883 16.4095 3.03962C16.7577 3.02041 17.1006 3.13099 17.372 3.34999L17.5 3.46699Z" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>                    
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-               <a class="dropdown-item" href="#">Action</a>
-               <a class="dropdown-item" href="#">Another action</a>
-               <div class="dropdown-divider"></div>
-               <a class="dropdown-item" href="#">Something else here</a>
-            </div>
+         </li>
+         <li class="nav-item">
+            <a class="nav-link" href="#">
+                <svg width="24" height="24" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14.4219 4.43126C14.2124 3.94632 13.9104 3.50687 13.5328 3.13751C13.1549 2.76705 12.7093 2.47265 12.2203 2.27032C11.7132 2.05969 11.1694 1.95187 10.6203 1.95314C9.85 1.95314 9.09844 2.16407 8.44531 2.56251C8.28906 2.65782 8.14062 2.76251 8 2.87657C7.85938 2.76251 7.71094 2.65782 7.55469 2.56251C6.90156 2.16407 6.15 1.95314 5.37969 1.95314C4.825 1.95314 4.2875 2.05939 3.77969 2.27032C3.28906 2.47345 2.84687 2.76564 2.46719 3.13751C2.08906 3.50645 1.787 3.94601 1.57812 4.43126C1.36094 4.93595 1.25 5.47189 1.25 6.02345C1.25 6.54376 1.35625 7.08595 1.56719 7.63751C1.74375 8.09845 1.99687 8.57657 2.32031 9.05939C2.83281 9.82345 3.5375 10.6203 4.4125 11.4281C5.8625 12.7672 7.29844 13.6922 7.35938 13.7297L7.72969 13.9672C7.89375 14.0719 8.10469 14.0719 8.26875 13.9672L8.63906 13.7297C8.7 13.6906 10.1344 12.7672 11.5859 11.4281C12.4609 10.6203 13.1656 9.82345 13.6781 9.05939C14.0016 8.57657 14.2562 8.09845 14.4312 7.63751C14.6422 7.08595 14.7484 6.54376 14.7484 6.02345C14.75 5.47189 14.6391 4.93595 14.4219 4.43126V4.43126Z" fill="black"/>
+                    </svg>                                      
+            </a>
+         </li>
+         <li class="nav-item pt-1">
+            <a class="nav-link circle" href="/profile/{{profile.editor.username}}" style="background-image: url('{{profile_photo.url}}');">                                 
+            </a>
          </li>
        </ul>
     </div>

@@ -3,14 +3,14 @@
 {% load static %}
 {% block styles %}
 {% bootstrap_css %}
-<link rel="stylesheet" href="{% static 'css/index.css' %}">
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
 {% endblock %}
 {% block content %}
 <div class="container">
     <div class="row pt-5 flex-column-reverse flex-lg-row">
         <div class="col-md-6 pt-5 ig">
             {% if profile %}
-            <img src="{{profile.profile_photo.url}}" alt="logo" class="img-fluid img-responsive" id="ig1">
+            <img src="{{profile_display.profile_photo.url}}" alt="logo" class="img-fluid img-responsive" id="ig1">
             {% else %}
             <img src="{% static 'images/ig.png' %}" alt="logo" class=" img img-responsive" id="ig1">
             {% endif %}
@@ -20,7 +20,7 @@
             <h1 class="text-center">Instagram</h1>
             <p>{{ user.username }}</p>
             <p>{{ user.id }}</p>
-            <form action="/" method="post" enctype="multipart/form-data">
+            <form action="" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 {% bootstrap_form form %}
                 <div class="form-group">

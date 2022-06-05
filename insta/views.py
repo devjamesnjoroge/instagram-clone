@@ -8,10 +8,14 @@ from . models import Comment, Post, Profile
 @login_required(login_url='/accounts/login/')
 def index(request):
     posts = Post.objects.all()
-    return render(request, 'index.html', {"posts": posts})
+    user = request.user
+    profile = Profile.objects.get(editor=user)
+    profile_photo = profile.profile_photo
+    return render(request, 'index.html', {"posts": posts, "profile_photo": profile_photo, "profile": profile})
 
 @login_required(login_url='/accounts/login/')
-def profile(request):
+def profile(request, uname):
+    profile_display = Profile.objects.get(editor__username=uname)
     if Profile.objects.filter(editor=request.user).exists():
        profile = Profile.objects.get(editor=request.user)
     else:
@@ -30,7 +34,7 @@ def profile(request):
                 form.save()
     else:
         form = UserProfileForm()
-    return render(request, 'profile.html', {"form": form, "profile": profile})
+    return render(request, 'profile.html', {"form": form, "profile": profile, "profile_display": profile_display})
 
 def post(request):
     if request.method == 'POST':
