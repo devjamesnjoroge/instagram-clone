@@ -8,18 +8,24 @@ from . models import Comment, Post, Profile
 @login_required(login_url='/accounts/login/')
 def index(request):
     posts = Post.objects.all()
+    pfile = Profile()
     user = request.user
-    profile = Profile.objects.get(editor=user)
-    profile_photo = profile.profile_photo
-    return render(request, 'index.html', {"posts": posts, "profile_photo": profile_photo, "profile": profile})
+    if Profile.objects.filter(editor=request.user).exists():
+        profile = Profile.objects.get(editor=user)
+        profile_photo = profile.profile_photo
+    else:
+        profile = None
+        profile_photo = None
+    return render(request, 'index.html', {"posts": posts, "profile_photo": profile_photo, "profile": profile, "pfile": pfile})
 
 @login_required(login_url='/accounts/login/')
 def profile(request, uname):
-    profile_display = Profile.objects.get(editor__username=uname)
     if Profile.objects.filter(editor=request.user).exists():
        profile = Profile.objects.get(editor=request.user)
+       profile_display = Profile.objects.get(editor__username=uname)
     else:
         profile = None
+        profile_display = None
     if request.method == 'POST':
         form = UserProfileForm(request.POST, request.FILES)
         if form.is_valid():
