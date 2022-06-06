@@ -4,6 +4,13 @@ from . forms import PostForm, UserProfileForm, CommentForm
 from . models import Comment, Post, Profile
 
 # Create your views here.
+@login_required(login_url='/accounts/login/')
+def index(request):
+    if Post.objects.filter(editor__editor__username = request.user.username).exists():
+        posts = Post.objects.filter(editor__editor__username = request.user.username)
+    else:
+        posts = None
+    return render(request, 'index.html', {"posts": posts})
 
 @login_required(login_url='accounts/login')
 def editProfile(request, username):
@@ -28,6 +35,7 @@ def editProfile(request, username):
 
         return render(request, 'profile.html', {"form": form})
 
+@login_required(login_url='accounts/login')
 def profile(request, username):
     checker = False
     if username == request.user.username:
@@ -43,7 +51,8 @@ def profile(request, username):
         profile = None
         posts = None
     return render(request, 'profile_d.html', {"profile": profile, "posts": posts, "checker": checker})
-    
+
+@login_required(login_url='accounts/login')
 def create_post(request):
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES)

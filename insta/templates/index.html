@@ -14,7 +14,10 @@
         <div class="col-md-5 offset-2">
             <div class="card">
                 <div class="card-header">
-                    <h6><a href="profile/{{ post.editor.username }}">{{ post.editor.username }}</a></h6>
+                    {% if post.editor.profile_photo %}
+                    <div class="circle" style="background-image: url('{{post.editor.profile_photo.url}}');"></div>
+                    {% endif %}
+                    <h6><a href="profile/{{ post.editor.editor.username }}">{{ post.editor.editor.username }}</a></h6>
                     </div>
                  
                 
