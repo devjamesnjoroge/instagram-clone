@@ -44,7 +44,7 @@ def profile(request, username):
     if Profile.objects.filter(editor__username = username).exists():
         profile = Profile.objects.filter(editor__username = username).first()
         if Post.objects.filter(editor__editor__username = username).exists():
-            posts = Post.objects.filter(editor__username = username)
+            posts = Post.objects.filter(editor__editor__username = username)
         else:
             posts = None
     else:
@@ -63,3 +63,21 @@ def create_post(request):
     else:
         form = PostForm()
     return render(request, 'post.html', {"form": form})
+
+
+@login_required(login_url='accounts/login')
+def comment(request, id):
+    if Comment.objects.all().exists():
+        comments = Comment.objects.all()
+    else:
+        comments = None
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = Post.objects.get(id=id)
+            comment.editor = request.user.profile
+            comment.save()
+    else:
+        form = CommentForm()
+    return render(request, 'comments.html', {"form": form, "comments": comments})

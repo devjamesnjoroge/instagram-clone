@@ -17,15 +17,17 @@
                     {% if post.editor.profile_photo %}
                     <div class="circle" style="background-image: url('{{post.editor.profile_photo.url}}');"></div>
                     {% endif %}
-                    <h6><a href="profile/{{ post.editor.editor.username }}">{{ post.editor.editor.username }}</a></h6>
+                    <h6><a href="/{{ post.editor.editor.username }}">{{ post.editor.editor.username }}</a></h6>
                     </div>
                  
                 
                 <div class="card-body" style="background-image: url('{{post.image.url}}');">
                    
                 </div>
-                <p>{{post.caption}}</p>
-                <a href="/comment/{{post.id}}">Comment</a>
+                <div class="card-footer">
+                    <p>{{post.caption}}</p>
+                    <a href="/comment/{{post.id}}">Comment</a>
+                </div>
             </div>
             </div>
         </div>

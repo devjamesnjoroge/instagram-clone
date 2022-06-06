@@ -24,6 +24,10 @@ body{
     width: auto;
 }
 
+.card-footer{
+    padding-left: 10px;
+}
+
 .circle{
     background-position: center;
     background-size: cover;
