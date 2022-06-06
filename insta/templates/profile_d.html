@@ -25,8 +25,14 @@
                 <p> <strong>144</strong> Followers</p>
                 <p> <strong>100</strong> Following</p>
             </div>
-            <div class="line3 d-flex justify-content-between">
+            <div class="line3 d-flex justify-content-between flex-column">
                 <p>{{profile.bio}}</p>
+            {% if checker is not True %}
+            <form action="/{{profile.editor.username}}" method="post">
+                {% csrf_token %}
+                <input type="submit" value="{{text}}">
+            </form>
+            {% endif %}
             </div>
         </div>
         

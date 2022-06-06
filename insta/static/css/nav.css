@@ -2,6 +2,7 @@ nav{
     padding-left: 5vw!important;
     padding-right: 8vw!important;
     margin-bottom: 5vh!important;
+    background: linear-gradient(to bottom , #fff9bb , #fff9bb );
 }
 
 .nl{
@@ -21,7 +22,7 @@ nav{
     margin-left: 10vw!important;
 }
 
-@media screen and (max-width: 1150px){
+@media screen and (max-width: 1200px){
     .nl{
         padding-left: 10vw !important;
     }
@@ -30,6 +31,17 @@ nav{
     }
     
 }
+@media screen and (max-width: 1005px){
+    .nl{
+        padding-left: 7vw !important;
+    }
+    .navl{
+        margin-left: 8vw!important;
+    }
+    
+}
+
+
     
 
 
