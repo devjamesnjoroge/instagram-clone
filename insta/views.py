@@ -44,3 +44,13 @@ def profile(request, username):
         posts = None
     return render(request, 'profile_d.html', {"profile": profile, "posts": posts, "checker": checker})
     
+def create_post(request):
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.editor = request.user.profile
+            post.save()
+    else:
+        form = PostForm()
+    return render(request, 'post.html', {"form": form})
