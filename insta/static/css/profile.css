@@ -1,3 +1,12 @@
+.container{
+    font-size: 18px;
+    background-color: #f1f1f1;
+}
+
+body{
+    background-color: rgb(216, 216, 216);
+}
+
 .ig{
     position: relative;
     display: flex;
@@ -29,3 +38,20 @@ form .form-group small{
 form{
     width: 70%;
 }
+
+.p_image{
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.upper_p{
+    border-bottom: 1px solid rgb(202, 196, 196);
+    padding-bottom: 5vh;
+    padding-top: 3vh;
+    border-radius: 5px;
+}
+

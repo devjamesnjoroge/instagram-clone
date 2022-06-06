@@ -33,8 +33,7 @@ class Profile(models.Model):
 class Post(models.Model):
     image = CloudinaryField('image')
     caption = models.TextField(max_length=500)
-    editor = models.ForeignKey(User, on_delete=models.CASCADE)
-    likes = models.ManyToManyField(User, related_name='likes', blank=True)
+    editor = models.ForeignKey(Profile, on_delete=models.CASCADE)
 
     def save_post(self):
         self.save()
@@ -55,7 +54,7 @@ class Post(models.Model):
 
 class Comment(models.Model):
     comment = models.TextField(max_length=500)
-    editor = models.ForeignKey(User, on_delete=models.CASCADE)
+    editor = models.ForeignKey(Profile, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
 
     def save_comment(self):
@@ -66,7 +65,7 @@ class Comment(models.Model):
 
 
 class Like(models.Model):
-    editor = models.ForeignKey(User, on_delete=models.CASCADE)
+    editor = models.ForeignKey(Profile, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
 
     def save_like(self):

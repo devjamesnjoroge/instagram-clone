@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load static %}
+{% block styles %}
+{% bootstrap_css %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+{% block content %}
+{% if profile %}
+<div class="container upper_p">
+    <div class="row">
+        <div class="col-lg-3 offset-2">
+            <div class="p_image" style="background-image: url('{{profile.profile_photo.url}}');">
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="line1 d-flex justify-content-between">
+                <h3>{{profile.editor.username}}</h3>
+                {% if checker %}
+                <a href="/{{profile.editor.username}}/edit">Edit Profile</a>
+                {% endif %}
+            </div>
+            <div class="line2 d-flex justify-content-between">
+                <p> <strong>0</strong> Posts</p>
+                <p> <strong>144</strong> Followers</p>
+                <p> <strong>100</strong> Following</p>
+            </div>
+            <div class="line3 d-flex justify-content-between">
+                <p>{{profile.bio}}</p>
+            </div>
+        </div>
+        
+    </div>
+</div>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-3 pt-3" align="center">
+            <h4>POSTS</h4>
+        </div>
+    </div>
+</div>
+{% else %}
+<h1>No profile</h1>
+{% if checker %}
+<a href="/{{request.user.username}}/edit">Edit Profile</a>
+{% endif %}
+{% endif %}
+{% endblock %}
