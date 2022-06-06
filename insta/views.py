@@ -62,7 +62,7 @@ def profile(request, username):
         is_following = True
         text = 'Unfollow'
         if request.method == 'POST':
-            follow_object = Follow.objects.get(following__editor__username = username)
+            follow_object = Follow.objects.get(following__editor__username = username, follower_id = request.user.id)
             follow_object.delete()
             return HttpResponseRedirect(request.path_info)
 
@@ -74,8 +74,11 @@ def profile(request, username):
             follow.follower = request.user
             follow.save()
             return HttpResponseRedirect(request.path_info)
-
-    return render(request, 'profile_d.html', {"profile": profile, "posts": posts, "checker": checker, 'text': text})
+    following = Follow.objects.filter(follower__username = username).all()
+    followers = Follow.objects.filter(following__editor__username = username)
+    following_count = following.count()
+    followers_count= followers.count()
+    return render(request, 'profile_d.html', {"profile": profile, "posts": posts, "checker": checker, 'text': text, 'f_count': following_count, 'fr_count': followers_count})
 
 @login_required(login_url='accounts/login')
 def create_post(request):

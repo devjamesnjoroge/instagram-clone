@@ -75,6 +75,5 @@ class Like(models.Model):
         self.delete()
 
 class Follow(models.Model):
-    following = models.OneToOneField(Profile, on_delete=models.CASCADE)
+    following = models.ForeignKey(Profile, on_delete=models.CASCADE)
     follower = models.ForeignKey(User, on_delete=models.CASCADE)
-
