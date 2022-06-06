@@ -18,8 +18,20 @@ nav{
 }
 
 .navl{
-    margin-left: 15vw!important;
+    margin-left: 10vw!important;
 }
+
+@media screen and (max-width: 1150px){
+    .nl{
+        padding-left: 10vw !important;
+    }
+    .navl{
+        margin-left: 10vw!important;
+    }
+    
+}
+    
+
 
 @media screen and (max-width: 991px) {
     .nl{
