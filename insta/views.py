@@ -1,12 +1,37 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from . forms import PostForm, UserProfileForm, CommentForm, FollowForm
-from . models import Comment, Follow, Post, Profile
+from . models import Comment, Follow, Post, Profile, Like
 from django.http import HttpResponseRedirect
 
 # Create your views here.
+
+@login_required(login_url='accounts/login')
+def like(request, id):
+
+    if Like.objects.filter(editor__editor = request.user, post__id = id).exists():
+        if request.method == 'POST':
+            like_object = Like.objects.get(editor__editor = request.user, post__id = id)
+            like_object.delete()
+            return redirect('/')
+
+
+    else:
+        if request.method == 'POST':
+            like = Like()
+            like.post = Post.objects.get(id = id)
+            like.editor = Profile.objects.get(editor = request.user)
+            like.save()
+            return redirect('/')
+
+
+    return redirect('/')
+
+
+
 @login_required(login_url='/accounts/login/')
 def index(request):
+    
     if Profile.objects.filter(editor=request.user).exists():
         profile = Profile.objects.get(editor=request.user)
     else:
@@ -15,7 +40,8 @@ def index(request):
         posts = Post.objects.filter(editor__editor__username = request.user.username)
     else:
         posts = None
-    return render(request, 'index.html', {"posts": posts, "profile": profile})
+    posts = Post.objects.all()
+    return render(request, 'index.html', {"posts": posts, "profile": profile, 'color': 'red'})
 
 @login_required(login_url='accounts/login')
 def editProfile(request, username):

@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^post/$', views.create_post, name='post'),
     path('comment/<int:id>', views.comment, name='comment'),
     path('profile/search', views.search, name='search'),
+    path('like/<int:id>', views.like, name='like')
 ]
