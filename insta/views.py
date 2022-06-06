@@ -6,11 +6,15 @@ from . models import Comment, Post, Profile
 # Create your views here.
 @login_required(login_url='/accounts/login/')
 def index(request):
+    if Profile.objects.filter(editor=request.user).exists():
+        profile = Profile.objects.get(editor=request.user)
+    else:
+        profile = None
     if Post.objects.filter(editor__editor__username = request.user.username).exists():
         posts = Post.objects.filter(editor__editor__username = request.user.username)
     else:
         posts = None
-    return render(request, 'index.html', {"posts": posts})
+    return render(request, 'index.html', {"posts": posts, "profile": profile})
 
 @login_required(login_url='accounts/login')
 def editProfile(request, username):
