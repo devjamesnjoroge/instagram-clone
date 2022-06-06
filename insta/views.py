@@ -85,3 +85,13 @@ def comment(request, id):
     else:
         form = CommentForm()
     return render(request, 'comments.html', {"form": form, "comments": comments})
+
+
+@login_required(login_url='accounts/login')
+def search(request):
+    if request.method == 'POST':
+        search_term = request.POST.get('search_term')
+        profiles = Profile.objects.filter(editor__username__icontains=search_term).all()
+        return render(request, 'search.html', {"profiles": profiles})
+    else:
+        return render(request, 'search.html')

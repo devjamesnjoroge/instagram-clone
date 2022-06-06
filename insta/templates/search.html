@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load static %}
+{% block styles %}
+{% bootstrap_css %}
+<link rel="stylesheet" href="{% static 'css/search.css' %}">
+{% endblock %}
+{% block content %}
+
+
+
+
+    
+<div class="container">
+    <div class="row">
+        {% if profiles %}
+        {% for profile in profiles %}
+
+        <div class="col-md-4 offset-2">
+            <div class="card">
+                <div class="card-header"><a href="/{{profile.editor.username}}">{{profile.editor.username}}</a></div>
+                <div class="card-body">
+                    {% if profile.profile_photo %}
+                    <div class="circle" style="background-image: url('{{profile.profile_photo.url}}');"></div>
+                    {% endif %}
+                    <p>{{profile.bio}}</p>
+                </div>
+            </div>
+    
+        </div>
+
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
